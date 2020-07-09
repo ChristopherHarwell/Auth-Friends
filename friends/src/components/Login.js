@@ -8,13 +8,13 @@ export function Login() {
         }
     });
 
-    function handleChange(event) {
-        useState({
-            credentials: {
-                ...state.credentials,
-                [event.target.name]: event.target.value
-            }
-        });
+    const handleChange = (event) => {
+    //    const state =  useState({
+    //         credentials: {
+    //             ...state.credentials,
+    //             [event.target.name]: event.target.value
+    //         }
+    //     });
     };
 
     function login(event) {
@@ -23,7 +23,8 @@ export function Login() {
         .post("/login", state.credentials)
         .then(res => {
           localStorage.setItem("token", res.data.payload);
-          props.history.push("/friends");
+          console.log(res.data.history);
+          res.data.history.push("/friends");
         })
         .catch(err => {
           console.log("Err is: ", err);
