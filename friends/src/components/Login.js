@@ -9,12 +9,12 @@ export function Login() {
     });
 
     const handleChange = (event) => {
-    //    const state =  useState({
-    //         credentials: {
-    //             ...state.credentials,
-    //             [event.target.name]: event.target.value
-    //         }
-    //     });
+       const state =  useState({
+            credentials: {
+                ...state.credentials,
+                [event.target.name]: event.target.value
+            }
+        });
     };
 
     function login(event) {

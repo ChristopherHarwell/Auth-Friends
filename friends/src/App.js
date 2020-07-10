@@ -3,8 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {Login} from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
-import { Router } from 'express';
-import { Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import FriendsList from './components/FriendsList';
 
 function App() {
