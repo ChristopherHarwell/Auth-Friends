@@ -6,7 +6,11 @@ export function axiosWithAuth() {
   return axios.create({
     baseURL: "http://localhost:5000/api",
     headers: {
-      Authorization: token
-    }
+      Authorization: token,
+    },
+    body: {
+      username: "Lambda School",
+      password: "i<3Lambd4",
+    },
   });
-};
+}

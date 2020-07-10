@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {axiosWithAuth} from "../utils/axiosWithAuth";
 export function Login() {
-    const state = useState({
+    const [state, setState] = useState({
         credentials: {
-            username: "",
-            password: "",
+            username: "Lambda School",
+            password: "i<3Lambd4",
         }
     });
 
     const handleChange = (event) => {
-       const state =  useState({
+       setState({
             credentials: {
                 ...state.credentials,
                 [event.target.name]: event.target.value
@@ -23,8 +23,6 @@ export function Login() {
         .post("/login", state.credentials)
         .then(res => {
           localStorage.setItem("token", res.data.payload);
-          console.log(res.data.history);
-          res.data.history.push("/friends");
         })
         .catch(err => {
           console.log("Err is: ", err);
@@ -46,7 +44,7 @@ export function Login() {
                     value={state.credentials.password}
                     onChange={handleChange}
                 />
-                <button>Log In</button>
+                <button type="submit">Log In</button>
             </form>
         </div>
     );

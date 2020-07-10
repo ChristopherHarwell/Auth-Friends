@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 function FriendsList() {
-  const state = useState({ friends: [] });
+  const [state, setState] = useState({ friends: [] });
 
   useEffect(() => getData(), []);
 
@@ -10,18 +10,20 @@ function FriendsList() {
     axiosWithAuth()
       .get("/friends")
       .then((response) => {
-          return [{...state, friends: response.data.friends}]    
-    })
+        console.log(response.data);
+        setState({ friends: response.data });
+        
+      })
       .catch((errorMessage) => {
         console.error(errorMessage);
       });
   }
+
+  console.log("FriendsList:", state.friends);
   return (
     <>
       {state.friends.map((friend) => (
-        <div>
-          <p>{friend.name}</p>
-        </div>
+        <p>{friend.name}</p>
       ))}
     </>
   );
