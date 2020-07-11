@@ -1,4 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
+import axiosWithAuth from "../utils/axiosWithAuth";
+
+function AddFriends() {
+  const [friends, setFriends] = useState([{
+    id: Date.now(),
+    name: "",
+    age: "",
+    email: "",
+  }]);
+
+  axiosWithAuth()
+    .post("/friends/")
+    .then((res) => {
+      setFriends(...friends, res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 
 function AddFriends() {
   return (
