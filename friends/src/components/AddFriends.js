@@ -1,38 +1,32 @@
-import React, {useState} from "react";
-import axiosWithAuth from "../utils/axiosWithAuth";
+import React from "react";
 
-function AddFriends() {
-  const [friends, setFriends] = useState([{
-    id: Date.now(),
-    name: "",
-    age: "",
-    email: "",
-  }]);
-
-  axiosWithAuth()
-    .post("/friends/")
-    .then((res) => {
-      setFriends(...friends, res.data);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-
-function AddFriends() {
+function AddFriends(props) {
   return (
-    <form>
-      <label>
-        Name:
-        <input type="text" name="name"/>
-      </label>
-      <label>
-        Age:
-        <input type="number" name="age"/>
-      </label>
-      <label>
-        Email:
-        <input type="email" name="email"/>
-      </label>
-    </form>
+    <>
+      {props.friends.map((friend) => {
+        return (
+          < div style={{listStyleType: "none", border: "solid black 2px"}}>
+            <span>
+                <h3>ID:</h3>
+                <p>{friend.id}</p>
+            </span>
+            <span>
+                <h3>Name:</h3>
+                <p>{friend.name}</p>
+            </span>
+            <span>
+                <h3>Age:</h3>
+                <p>{friend.age}</p>
+            </span>
+            <span>
+                <h3>Email:</h3>
+                <p>{friend.email}</p>
+            </span>
+          </div>
+        );
+      })}
+    </>
   );
 }
+
+export default AddFriends;
